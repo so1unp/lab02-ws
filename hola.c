@@ -2,10 +2,22 @@
  * Imprime un saludo por la salida estándar.
  */
 
+
+#include <stdio.h>
 #include <stdlib.h>     // exit()
 
-int main(void)
+#include <stdlib.h>
+#include <unistd.h>
+
+
+
+int main(int argc,char* arg[])
 {
-    // Termina la ejecución del proceso.
+    if(argc > 0 ){
+        printf("hola %s \n",arg[1]);
+
+    }
+  
+  
     exit(EXIT_SUCCESS);
 }
