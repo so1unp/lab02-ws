@@ -1,1 +1,0 @@
-El error es que no encontraba el archivo.txt
