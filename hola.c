@@ -13,7 +13,7 @@
 
 int main(int argc,char* arg[])
 {
-    if(argc > 0 ){
+    if(argc > 1 ){
         printf("hola %s \n",arg[1]);
 
     }
