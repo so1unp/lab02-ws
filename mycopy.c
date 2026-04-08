@@ -2,10 +2,37 @@
  * Copia un archivo en otro.
  */
 
+#include <stdio.h>
 #include <stdlib.h>     // exit()
+#include <unistd.h>
 
-int main(void)
+int main(int argc, char *argv[])
 {
-    // Termina la ejecución del proceso.
+    ssize_t bytes_leidos;
+    char caracter_leido;
+    char buffer[1];
+
+    FILE* archivo_origen;
+    archivo_origen = fopen(argv[1], "r");
+    if (archivo_origen == NULL) {
+        perror(argv[1]);
+        return 1;
+    }
+ 
+    if ( fopen(argv[2], "r") != NULL) {
+        perror("el archivo desino ya existe");
+        return 1;
+    }
+    FILE* archivo_destino = fopen(argv[2], "w");
+
+  
+    while (fread(buffer, sizeof(char), 1, archivo_origen) == 1) {
+        fwrite(buffer,sizeof(char),1, archivo_destino);
+
+    }
+    fclose(archivo_destino);
+    fclose(archivo_origen);
+
+  
     exit(EXIT_SUCCESS);
 }
