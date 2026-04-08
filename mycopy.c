@@ -16,14 +16,15 @@ int main(int argc, char *argv[])
     archivo_origen = fopen(argv[1], "r");
     if (archivo_origen == NULL) {
         perror(argv[1]);
-        return 1;
+        exit(EXIT_FAILURE);
     }
+    FILE* archivo_destino = fopen(argv[2], "wx");
  
-    if ( fopen(argv[2], "r") != NULL) {
-        perror("el archivo desino ya existe");
-        return 1;
+    if (archivo_destino ==NULL) {
+        perror(argv[1]);
+        exit(EXIT_FAILURE);
     }
-    FILE* archivo_destino = fopen(argv[2], "w");
+   
 
   
     while (fread(buffer, sizeof(char), 1, archivo_origen) == 1) {
