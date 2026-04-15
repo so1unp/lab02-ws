@@ -1,0 +1,5 @@
+Comparando ambos resultados logramos observar las siguientes diferencias.
+
+fwrite() usa un buffer que agrupa los datos antes de enviarlos al sistema operativo, reduciendo la cantidad de llamadas al sistema. En cambio, write() escribe directamente en el kernel sin buffering en la biblioteca estándar, por lo que puede generar más system calls. Por ello, fwrite() suele ser más eficiente cuando se realizan muchas escrituras pequeñas.
+
+fread() utiliza un buffer en espacio de usuario que agrupa los datos y reduce la cantidad de llamadas al sistema. En cambio, read() accede directamente al kernel sin buffering de la biblioteca estándar. Por ello, fread() suele generar menos system calls y ser más eficiente en lecturas pequeñas y repetitivas.
